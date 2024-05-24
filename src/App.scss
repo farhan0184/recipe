@@ -1,0 +1,430 @@
+@import './media.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(248, 248, 248);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Rokkitt", serif;
+    margin-top: 0;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+// loader
+.loader {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    .spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #6fcb9f;
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// header
+.header {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 70px;
+
+    .layer {
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .logo-wrapper {
+            padding-top: 30px;
+            display: flex;
+            justify-content: center;
+
+            .logo {
+                border: 1px solid white;
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 100%;
+
+                .brand {
+                    font-size: 30px;
+                    color: white;
+                }
+            }
+        }
+
+        .header-text {
+            text-align: center;
+            color: white;
+            padding: 100px 10px 125px 10px;
+
+            h1 {
+                font-size: 35px;
+                margin-bottom: 15px;
+
+                @include medium {
+                    font-size: 45px;
+                }
+
+            }
+
+            p {
+                font-size: 18px;
+
+                @include medium {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
+
+
+// tabs components
+.recipeHeading {
+    text-align: center;
+    font-size: 35px;
+    color: #6fcb9f;
+
+    @include medium {
+        font-size: 45px;
+    }
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+
+    .tablist {
+        width: 140px;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        position: relative;
+        cursor: pointer;
+
+        @include medium {
+            height: 100px;
+        }
+
+        @include default {
+            height: 120px;
+        }
+
+        svg {
+            font-size: 35px;
+
+            @include medium {
+                font-size: 50px;
+            }
+        }
+
+        span {
+            font-size: 14px;
+
+            @include medium {
+                font-size: 18px;
+            }
+        }
+
+        &.active {
+            background-color: #6fcb9f;
+            color: white;
+
+            &::after {
+                position: absolute;
+                content: '';
+                border-top: 15px solid #6fcb9f;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                bottom: -14px;
+
+                @include medium {
+                    border-top: 20px solid #6fcb9f;
+                    border-left: 15px solid transparent;
+                    border-right: 15px solid transparent;
+                    bottom: -18px;
+                }
+            }
+        }
+
+    }
+}
+
+.recipe_banner {
+    background-color: #29336b;
+    padding: 20px;
+    color: white;
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 70px;
+    flex-direction: column-reverse;
+
+    @include medium {
+        padding: 60px 40px;
+        flex-direction: row;
+    }
+
+    .left-col {
+
+        @include medium {
+            width: 50%;
+        }
+
+        .badge {
+            background-color: #6fcb9f;
+            padding: 5px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+
+            @include medium {
+                font-size: 40px;
+            }
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+
+            @include medium {
+                font-size: 18px;
+            }
+
+            strong {
+                margin-right: 5px;
+            }
+        }
+
+        h3 {
+            font-size: 25px;
+            margin-bottom: 20px;
+
+            @include medium {
+                font-size: 30px;
+            }
+        }
+
+        .ingredients {
+            ul {
+                list-style: none;
+                padding: 0;
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                @include medium {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 40px;
+                }
+
+                li {
+                    display: flex;
+                    align-items: start;
+
+                    font-size: 16px;
+                    width: 100%;
+
+                    @include medium {
+                        font-size: 18px;
+                        width: calc(50% - 20px);
+                    }
+
+                    span {
+                        width: calc(100% - 14px);
+
+                        @include medium {
+                            width: calc(100% - 18px);
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    .right-col {
+
+
+        @include medium {
+            width: 50%;
+            padding-top: 50px;
+        }
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .image-wrapper {
+            width: 100%;
+            height: 100%;
+
+            @include medium {
+                width: 300px;
+                height: 300px;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                margin-bottom: 20px;
+                border-radius: 20px;
+
+                @include medium {
+                    border-radius: 100%;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+
+// RecipeLists
+.heading-line {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 35px;
+    color: #6fcb9f;
+    margin-bottom: 50px;
+
+    @include medium {
+        font-size: 45px;
+    }
+
+
+    .input-wrapper {
+        display: flex;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        margin: 0 auto;
+
+        @include medium {
+            width: 80%;
+        }
+
+        input {
+            width: 90%;
+            height: 45px;
+            outline: none;
+            border: 1px solid #6fcb9f;
+            border-radius: 8px 0 0 8px;
+            padding: 5px 15px;
+            font-size: 16px;
+
+            @include medium {
+                width: 80%;
+                font-size: 20px;
+            }
+        }
+
+        button {
+            height: 45px;
+            outline: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #6fcb9f;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            width: 50px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    }
+
+}
+
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 70px;
+
+    .flexItem {
+        background-color: #fff;
+        border-radius: 6px;
+        overflow: hidden;
+        width: calc(100% / 2 - 20px);
+
+        @include medium {
+            width: calc(100% / 3 - 20px);
+        }
+
+        @include default {
+            width: calc(100% / 4 - 20px);
+        }
+
+        .img-wrapper {
+            margin-bottom: 10px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        p {
+            color: #29336b;
+            padding: 0 15px;
+        }
+    }
+}
